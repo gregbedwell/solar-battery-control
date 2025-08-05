@@ -1,0 +1,51 @@
+[project]
+name = "solar-battery-control"
+version = "0.1.0"
+description = "To control my GivEnergy battery/inverter and take the best advantage of Octopus agile tariff"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "loguru>=0.7.3",
+    "typer>=0.16.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy",
+    "ruff",
+]
+
+[project.scripts]
+solarbc = "solarbc.__main__:main"
+
+[tool.ruff]
+# Root directories for resolving modules and packages
+src = ["src"]
+
+# Formatting and linting settings
+line-length = 88
+target-version = "py311"
+
+# Enable all rule sets (includes E, F, I, D, UP, etc.)
+lint.select = ["ALL"]
+
+# Ignore mutually exclusive or intentionally unwanted rules
+lint.ignore = [
+    "D203",   # one-blank-line-before-class: conflicts with D211
+    "D213",   # multi-line-summary-second-line: conflicts with D212
+    "CPY001", # missing copyright
+    "COM812", # trailing comma missing in collection
+]
+
+# Enable Ruff's formatter explicitly (optional but clear)
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_configs = true
+warn_unreachable = true
+show_error_codes = true
