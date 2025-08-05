@@ -6,7 +6,7 @@ from solarbc.app import app
 
 
 @app.command()
-def main() -> None:
+def main():
     """Say hello."""
     logger.info("[bold green]Hello, World![/]")
 
